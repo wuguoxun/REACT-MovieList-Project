@@ -1,4 +1,5 @@
 import './App.css';
+import Navbar from "./components/NavBar/Navbar";
 import MoviePage from "./components/MoviePage/MoviePage"
 import { connect } from 'react-redux';
 import { actions } from "./actionCreator"
@@ -8,8 +9,10 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
+
+
 
 function App(props) {
 
@@ -22,15 +25,9 @@ function App(props) {
   }, [props.movie])
 
   return (
+    
     <Router>
-      <ul>
-        <li>
-          <Link to="/">Movie</Link>
-        </li>
-        <li>
-          <Link to="/page2">page2</Link>
-        </li>
-      </ul>
+    <Navbar />
       <Routes>
         <Route path='/' element=
           {<MoviePage
@@ -43,10 +40,8 @@ function App(props) {
           }
         />
       </Routes>
-      <div>
-      </div>
     </Router>
-
+      
   );
 }
 
