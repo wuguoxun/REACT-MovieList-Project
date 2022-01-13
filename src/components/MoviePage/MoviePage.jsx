@@ -17,13 +17,11 @@ function MoviePage(props) {
         setModalIsOpen(false)
     }
 
-
     return (
         <div>
             <div className="movieDiv">
                 {props.movie.map((item, index) => (
                     <div key={item.id}>
-
                         <div className={modalIsOpen ? 'hidden' : 'posterDiv'}>
                             <div onClick={() => handleClickOpenModal(item.id)}>
                                 <div>
@@ -40,6 +38,12 @@ function MoviePage(props) {
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                     <div className="modaBody">
+                                        <img class="modalImage" src={img_url + item.poster_path} alt="posterImage" />
+                                        <div className="modalOverview">
+                                            <span>{item.overview}</span>
+                                        </div>
+                                        <br></br>
+                                        <span className="modalVote">{item.vote_average}</span>
                                     </div>
 
                                 </div>
