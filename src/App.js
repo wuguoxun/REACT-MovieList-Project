@@ -18,8 +18,8 @@ function App(props) {
   }, [])
 
   useEffect(() => {
-    console.log(props.movie)
-  }, [props.movie])
+    props.getPage();
+  }, [props.pageNum])
 
   return (
     <Router>
@@ -35,6 +35,10 @@ function App(props) {
         <Route path='/' element=
           {<MoviePage
             movie={props.movie}
+            page={props.pageNum}
+            prevPage={props.prevPage}
+            nextPage={props.nextPage}
+            getPage={props.getPage}
           />}
         />
         <Route path='/page2' element=
@@ -51,12 +55,16 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => ({
-  movie: state.movie
+  movie: state.movie,
+  pageNum: state.pageNum
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getMovie: () => dispatch(actions.getMovie()),
+    prevPage: () => dispatch(actions.prevPage()),
+    nextPage: () => dispatch(actions.nextPage()),
+    getPage: () => dispatch(actions.getPage())
   }
 };
 
