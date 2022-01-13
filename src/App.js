@@ -52,7 +52,7 @@ const mapStateToProps = (state) => ({
   movie: state.movie,
   pageNum: state.pageNum
 });
-
+// test
 const mapDispatchToProps = (dispatch) => {
   return {
     getMovie: () => dispatch(actions.getMovie()),
