@@ -49,14 +49,13 @@ function MoviePage(props) {
                 ))}
                 <nav className={modalIsOpen ? "hidden" : undefined} aria-label="Page navigation example">
                     <ul className="pagination justify-content-center">
-                        <li className="page-item disabled">
-                            <a className="page-link" href="#" tabIndex="-1">Previous</a>
+                        <li className={props.page === 1 ? "page-item disabled" : undefined}>
+                            <span className="page-link" onClick={props.prevPage} tabIndex="-1">Previous</span>
                         </li>
-                        <li className="page-item"><a className="page-link" href="#">1</a></li>
-                        <li className="page-item"><a className="page-link" href="#">2</a></li>
-                        <li className="page-item"><a className="page-link" href="#">3</a></li>
+                        <span className={props.page === 1 ? "page-item disabled" : "page-item"}><a className="page-link" onClick={props.prevPage}>&larr;</a></span>
+                        <span className={props.page === props.movie.length - 1 ? "page-item disabled" : "page-item"}><a className="page-link" onClick={props.nextPage}>&rarr;</a></span>
                         <li className="page-item">
-                            <a className="page-link" href="#">Next</a>
+                            <span className={props.page === props.movie.length - 1 ? "page-item disabled" : "page-link"} onClick={props.nextPage}>Next</span>
                         </li>
                     </ul>
                 </nav>
