@@ -35,14 +35,7 @@ function App(props) {
             getPage={props.getPage}
           />}
         />
-        <Route path='/page2' element=
-          {
-            <div>Hello You Can Place Page2 Here</div>
-          }
-        />
       </Routes>
-      <div>
-      </div>
     </Router>
 
   );
