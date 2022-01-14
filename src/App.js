@@ -1,5 +1,6 @@
 import './App.css';
 import Navbar from "./components/NavBar/Navbar";
+//import AddFavourites from "./components/MoviePage/AddFavourites"
 import MoviePage from "./components/MoviePage/MoviePage"
 import { connect } from 'react-redux';
 import { actions } from "./actionCreator"
@@ -43,6 +44,9 @@ function App(props) {
       </Routes>
       <div>
       </div>
+      {/* <div className='favorite'>
+				<MoviePage movie={movie} favouriteComponent={AddFavourites} />
+			</div> */}
     </Router>
 
   );

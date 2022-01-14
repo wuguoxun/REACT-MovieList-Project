@@ -16,7 +16,7 @@ function MoviePage(props) {
     const handleClickCloseModal = () => {
         setModalIsOpen(false)
     }
-
+    //const FavouriteComponent = props.favouriteComponent;
 
     return (
         <div>
