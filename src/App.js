@@ -1,4 +1,5 @@
 import './App.css';
+import ErrorBoundary from "./components/ErrorBoundary"
 import Navbar from "./components/NavBar/Navbar";
 import MoviePage from "./components/MoviePage/MoviePage"
 import { connect } from 'react-redux';
@@ -24,22 +25,27 @@ function App(props) {
 
   return (
     <Router>
-      <Navbar />
-    
-      <Routes>
-        <Route path='/' element=
-          {<MoviePage
-            movie={props.movie}
-            page={props.pageNum}
-            prevPage={props.prevPage}
-            nextPage={props.nextPage}
-            getPage={props.getPage}
-            handleLike={props.like}
-            handleUnlike={props.unlike}
-          />}
-        />
-        
-      </Routes>
+      <ErrorBoundary>
+        <Navbar />
+      </ErrorBoundary>
+
+      <ErrorBoundary>
+        <Routes>
+          <Route path='/' element=
+            {<MoviePage
+              movie={props.movie}
+              page={props.pageNum}
+              prevPage={props.prevPage}
+              nextPage={props.nextPage}
+              getPage={props.getPage}
+              handleLike={props.like}
+              handleUnlike={props.unlike}
+              likeList={props.likeList}
+            />}
+          />
+        </Routes>
+      </ErrorBoundary>
+
     </Router>
 
   );
@@ -47,8 +53,8 @@ function App(props) {
 
 const mapStateToProps = (state) => ({
   movie: state.movie,
-  pageNum: state.pageNum
-  
+  pageNum: state.pageNum,
+  likeList: state.likeList
 });
 
 const mapDispatchToProps = (dispatch) => {
