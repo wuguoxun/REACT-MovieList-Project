@@ -19,8 +19,13 @@ const prevPage = (payload = 1) => ({
     payload
 })
 
+const setLikeList = (payload) => ({
+    type: Actions.SET_LIKELIST,
+    payload
+})
+
 const getMovie = () => {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         fetch(url + api_key)
             .then(res => {
                 return res.json()
@@ -43,11 +48,29 @@ const getPage = () => {
     }
 }
 
+const like = (id) => {
+    return (dispatch,getState) => {
+        dispatch(setLikeList([...getState().likeList].concat(id)))
+    }
+}
+
+const unlike = (id) => {
+    return (dispatch,getState) => {
+        const removeFromLikeList = getState().likeList.filter((movie)=>{
+            return movie !== id
+        })
+        dispatch(setLikeList(removeFromLikeList))
+    }
+}
+
+
 export const actions = {
     getMovie,
     nextPage,
     prevPage,
-    getPage
+    getPage,
+    like,
+    unlike,
 }
 
 

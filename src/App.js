@@ -25,6 +25,7 @@ function App(props) {
   return (
     <Router>
       <Navbar />
+    
       <Routes>
         <Route path='/' element=
           {<MoviePage
@@ -33,8 +34,11 @@ function App(props) {
             prevPage={props.prevPage}
             nextPage={props.nextPage}
             getPage={props.getPage}
+            handleLike={props.like}
+            handleUnlike={props.unlike}
           />}
         />
+        
       </Routes>
     </Router>
 
@@ -44,6 +48,7 @@ function App(props) {
 const mapStateToProps = (state) => ({
   movie: state.movie,
   pageNum: state.pageNum
+  
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -51,7 +56,9 @@ const mapDispatchToProps = (dispatch) => {
     getMovie: () => dispatch(actions.getMovie()),
     prevPage: () => dispatch(actions.prevPage()),
     nextPage: () => dispatch(actions.nextPage()),
-    getPage: () => dispatch(actions.getPage())
+    getPage: () => dispatch(actions.getPage()),
+    like: (id) => dispatch(actions.like(id)),
+    unlike: (id) => dispatch(actions.unlike(id))
   }
 };
 

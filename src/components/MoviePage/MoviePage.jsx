@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./moviePage.css";
+import LikeBtn from "../LikeFeature/LikeBtn";
 
 function MoviePage(props) {
     const img_url = "https://image.tmdb.org/t/p/w500"
@@ -29,6 +30,13 @@ function MoviePage(props) {
                                     <p>{item.title}</p>
                                 </div>
                             </div>
+                            <LikeBtn
+                                key={index} 
+                                handleLike = {props.handleLike}
+                                handleUnlike={props.handleUnlike}
+                                movie={item}
+                                likeList={props.likeList}
+                                />
                         </div>
                         {curMovie === item.id &&
                             <div className={modalIsOpen ? "modalContainer" : 'hidden'} style={{ backgroundImage: `url(${img_url + item.backdrop_path})` }} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
