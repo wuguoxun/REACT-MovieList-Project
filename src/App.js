@@ -1,6 +1,8 @@
 import './App.css';
+import logo from "./components/NavBar/logo.png"
 import Navbar from "./components/NavBar/Navbar";
 import MoviePage from "./components/MoviePage/MoviePage"
+import LikeList from "./components/LikeList/LikeList"
 import { connect } from 'react-redux';
 import { actions } from "./actionCreator"
 import { useEffect } from 'react';
@@ -24,8 +26,16 @@ function App(props) {
 
   return (
     <Router>
-      <Navbar />
-    
+      {/* <Navbar /> */}
+      <div className='Navbar'>
+            <div className='navLogo'>
+                <img src={logo} />
+            </div>
+            <div className='navLinks'>
+            <Link to="/">Home</Link>
+            <Link to="/likedMovie">likedMovie</Link>
+            </div>
+        </div>
       <Routes>
         <Route path='/' element=
           {<MoviePage
@@ -36,9 +46,14 @@ function App(props) {
             getPage={props.getPage}
             handleLike={props.like}
             handleUnlike={props.unlike}
+            likeList={props.likeList}
           />}
         />
-        
+        <Route path='/likedMovie' element=
+        {<LikeList 
+          likeList={props.likeList}
+        />}
+        />
       </Routes>
     </Router>
 
@@ -47,8 +62,8 @@ function App(props) {
 
 const mapStateToProps = (state) => ({
   movie: state.movie,
-  pageNum: state.pageNum
-  
+  pageNum: state.pageNum,
+  likeList: state.likeList,
 });
 
 const mapDispatchToProps = (dispatch) => {

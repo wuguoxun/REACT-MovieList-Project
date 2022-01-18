@@ -3,7 +3,7 @@ import Actions from "./constants"
 const initialState = {
     movie: [],
     pageNum: 1,
-    likeList: []
+    likeList: [],
 }
 
 

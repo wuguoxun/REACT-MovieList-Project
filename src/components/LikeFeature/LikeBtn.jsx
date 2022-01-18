@@ -27,6 +27,10 @@ function LikeBtn(props) {
             setLikeStatus(!likeStatus)
         } 
     }
+  
+
+
+
     return (
         <div>
             <button className="LikeBtn" onClick={handleClick}>{likeText}</button>
