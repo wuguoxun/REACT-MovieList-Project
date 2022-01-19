@@ -17,8 +17,9 @@ function MoviePage(props) {
     const handleClickCloseModal = () => {
         setModalIsOpen(false)
     }
-
+    // throw new Error('I crashed!');
     return (
+        
         <div>
             <div className="movieDiv">
                 {props.movie.map((item, index) => (
@@ -31,12 +32,12 @@ function MoviePage(props) {
                                 </div>
                             </div>
                             <LikeBtn
-                                key={index} 
-                                handleLike = {props.handleLike}
+                                key={index}
+                                handleLike={props.handleLike}
                                 handleUnlike={props.handleUnlike}
                                 movie={item}
                                 likeList={props.likeList}
-                                />
+                            />
                         </div>
                         {curMovie === item.id &&
                             <div className={modalIsOpen ? "modalContainer" : 'hidden'} style={{ backgroundImage: `url(${img_url + item.backdrop_path})` }} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -46,7 +47,7 @@ function MoviePage(props) {
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                     <div className="modaBody">
-                                        <img class="modalImage" src={img_url + item.poster_path} alt="posterImage" />
+                                        <img className="modalImage" src={img_url + item.poster_path} alt="posterImage" />
                                         <div className="modalOverview">
                                             <span>{item.overview}</span>
                                         </div>
