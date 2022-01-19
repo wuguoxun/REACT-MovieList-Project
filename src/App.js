@@ -2,6 +2,7 @@ import './App.css';
 import ErrorBoundary from "./components/ErrorBoundary"
 import Navbar from "./components/NavBar/Navbar";
 import MoviePage from "./components/MoviePage/MoviePage"
+import LikeList from "./components/LikeList/LikeList"
 import { connect } from 'react-redux';
 import { actions } from "./actionCreator"
 import { useEffect } from 'react';
@@ -25,10 +26,21 @@ function App(props) {
 
   return (
     <Router>
-      <ErrorBoundary>
-        <Navbar />
-      </ErrorBoundary>
 
+
+      <ErrorBoundary>
+        <div className='Navbar'>
+            <div className='navLogo'>
+                <img src={logo} />
+            </div>
+            <div className='navLinks'>
+            <Link to="/">Home</Link>
+            <Link to="/likedMovie">likedMovie</Link>
+            </div>
+        </div>
+      </ErrorBoundary>
+     
+ 
       <ErrorBoundary>
         <Routes>
           <Route path='/' element=
@@ -43,8 +55,14 @@ function App(props) {
               likeList={props.likeList}
             />}
           />
+ <Route path='/likedMovie' element=
+        {<LikeList 
+          likeList={props.likeList}
+        />}
+        />
         </Routes>
       </ErrorBoundary>
+
 
     </Router>
 
@@ -55,6 +73,7 @@ const mapStateToProps = (state) => ({
   movie: state.movie,
   pageNum: state.pageNum,
   likeList: state.likeList
+
 });
 
 const mapDispatchToProps = (dispatch) => {

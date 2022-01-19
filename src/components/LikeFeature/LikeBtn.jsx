@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { useState } from "react"
+import "./likeBtn.css";
 
 function LikeBtn(props) {
     const [likeText, setLikeText] = useState("Like")
@@ -27,6 +28,10 @@ function LikeBtn(props) {
             setLikeStatus(!likeStatus)
         } 
     }
+  
+
+
+
     return (
         <div>
             <button className="LikeBtn" onClick={handleClick}>{likeText}</button>

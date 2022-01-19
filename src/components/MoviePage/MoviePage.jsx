@@ -31,6 +31,7 @@ function MoviePage(props) {
                                     <p>{item.title}</p>
                                 </div>
                             </div>
+
                             <LikeBtn
                                 key={index}
                                 handleLike={props.handleLike}
