@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { useState } from "react"
+import "./likeBtn.css";
 
 function LikeBtn(props) {
     const [likeText, setLikeText] = useState("Like")

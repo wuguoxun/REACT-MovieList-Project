@@ -30,7 +30,7 @@ function MoviePage(props) {
                                     <p>{item.title}</p>
                                 </div>
                             </div>
-                            <LikeBtn
+                            <LikeBtn className="likeBtn"
                                 key={index} 
                                 handleLike = {props.handleLike}
                                 handleUnlike={props.handleUnlike}

@@ -1,0 +1,19 @@
+.LikeBtn {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    
+    color:black;
+    background:yellow;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    margin: 0 auto;
+    text-decoration: none;
+    overflow: hidden;
+    
+}
+.LikeBtn:hover {
+    box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.2);
+    border-color: var(--red);
+}
