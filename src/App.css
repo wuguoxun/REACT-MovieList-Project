@@ -55,3 +55,12 @@ body {
     height: 60px;
     width: 60px;
 }
+
+.search-area {
+    display: flex;
+    justify-content: center;
+}
+
+.sorting {
+    margin-left: 20px;
+}
