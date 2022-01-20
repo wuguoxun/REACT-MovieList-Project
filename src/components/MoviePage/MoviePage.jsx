@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./moviePage.css";
+
 import LikeBtn from "../LikeFeature/LikeBtn";
 import { Form } from "react-bootstrap";
 import { SortMovie } from "../SearchArea/SearchArea";
+
 
 function MoviePage(props) {
     const img_url = "https://image.tmdb.org/t/p/w500"
