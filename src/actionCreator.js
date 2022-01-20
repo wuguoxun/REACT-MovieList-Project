@@ -49,14 +49,14 @@ const getPage = () => {
 }
 
 const like = (id) => {
-    return (dispatch,getState) => {
+    return (dispatch, getState) => {
         dispatch(setLikeList([...getState().likeList].concat(id)))
     }
 }
 
 const unlike = (id) => {
-    return (dispatch,getState) => {
-        const removeFromLikeList = getState().likeList.filter((movie)=>{
+    return (dispatch, getState) => {
+        const removeFromLikeList = getState().likeList.filter((movie) => {
             return movie !== id
         })
         dispatch(setLikeList(removeFromLikeList))

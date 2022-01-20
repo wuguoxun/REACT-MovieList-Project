@@ -1,4 +1,5 @@
 import './App.css';
+import logo from "./components/NavBar/logo.png"
 import ErrorBoundary from "./components/ErrorBoundary"
 import Navbar from "./components/NavBar/Navbar";
 import MoviePage from "./components/MoviePage/MoviePage"
@@ -26,21 +27,19 @@ function App(props) {
 
   return (
     <Router>
-
-
       <ErrorBoundary>
         <div className='Navbar'>
-            <div className='navLogo'>
-                <img src={logo} />
-            </div>
-            <div className='navLinks'>
+          <div className='navLogo'>
+            <img src={logo} />
+          </div>
+          <div className='navLinks'>
             <Link to="/">Home</Link>
             <Link to="/likedMovie">likedMovie</Link>
-            </div>
+          </div>
         </div>
       </ErrorBoundary>
-     
- 
+
+
       <ErrorBoundary>
         <Routes>
           <Route path='/' element=
@@ -55,15 +54,13 @@ function App(props) {
               likeList={props.likeList}
             />}
           />
- <Route path='/likedMovie' element=
-        {<LikeList 
-          likeList={props.likeList}
-        />}
-        />
+          <Route path='/likedMovie' element=
+            {<LikeList
+              likeList={props.likeList}
+            />}
+          />
         </Routes>
       </ErrorBoundary>
-
-
     </Router>
 
   );
@@ -73,7 +70,6 @@ const mapStateToProps = (state) => ({
   movie: state.movie,
   pageNum: state.pageNum,
   likeList: state.likeList
-
 });
 
 const mapDispatchToProps = (dispatch) => {

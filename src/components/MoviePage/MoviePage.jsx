@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./moviePage.css";
 import LikeBtn from "../LikeFeature/LikeBtn";
+import { Form } from "react-bootstrap";
 
 function MoviePage(props) {
     const img_url = "https://image.tmdb.org/t/p/w500"
@@ -19,7 +20,6 @@ function MoviePage(props) {
     }
     // throw new Error('I crashed!');
     return (
-        
         <div>
             <div className="movieDiv">
                 {props.movie.map((item, index) => (
