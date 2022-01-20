@@ -6,6 +6,7 @@ function LikeBtn(props) {
     const [likeText, setLikeText] = useState("Like")
     const [likeStatus,setLikeStatus] = useState(false)
 
+
     useEffect(() => {
         if (likeStatus === false) {
             setLikeText("Like")
@@ -14,10 +15,7 @@ function LikeBtn(props) {
         }
     }, [likeStatus])
 
-    useEffect(()=>{
-        console.log(props.likeList)
-
-    },[props.likeList])
+    
 
     const handleClick = (id) => {
         if(likeStatus===false){
