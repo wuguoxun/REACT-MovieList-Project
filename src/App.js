@@ -12,8 +12,10 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
+
+
 
 function App(props) {
 
@@ -26,8 +28,9 @@ function App(props) {
   }, [props.pageNum])
 
   return (
+    
     <Router>
-      <ErrorBoundary>
+     <ErrorBoundary>
         <div className='Navbar'>
           <div className='navLogo'>
             <img src={logo} />
@@ -61,8 +64,8 @@ function App(props) {
           />
         </Routes>
       </ErrorBoundary>
-    </Router>
-
+</Router>
+      
   );
 }
 
