@@ -4,7 +4,7 @@ import "./moviePage.css";
 
 import LikeBtn from "../LikeFeature/LikeBtn";
 import { Form } from "react-bootstrap";
-import { SortMovie } from "../SearchArea/SearchArea";
+import { SortMovie } from "../SearchArea/SearchMovie";
 
 
 function MoviePage(props) {
