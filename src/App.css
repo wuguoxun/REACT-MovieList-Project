@@ -9,6 +9,7 @@ body {
     padding: 0;
 }
 
+
 /* Navigation Bar */
 .Navbar {
     background-color: #0683f8;
@@ -16,6 +17,7 @@ body {
     height: 90px;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
+    margin-bottom: 20px;
 }
 
 .navLinks {
@@ -54,4 +56,11 @@ body {
     width: 60px;
 }
 
+.search-area {
+    display: flex;
+    justify-content: center;
+}
 
+.sorting {
+    margin-left: 20px;
+}

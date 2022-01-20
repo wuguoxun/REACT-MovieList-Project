@@ -2,6 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "./moviePage.css";
 
+import LikeBtn from "../LikeFeature/LikeBtn";
+import { Form } from "react-bootstrap";
+import { SortMovie } from "../SearchArea/SearchMovie";
+
+
 function MoviePage(props) {
     const img_url = "https://image.tmdb.org/t/p/w500"
 
@@ -16,14 +21,13 @@ function MoviePage(props) {
     const handleClickCloseModal = () => {
         setModalIsOpen(false)
     }
-
-
+    // throw new Error('I crashed!');
     return (
         <div>
+            <SortMovie />
             <div className="movieDiv">
                 {props.movie.map((item, index) => (
                     <div key={item.id}>
-
                         <div className={modalIsOpen ? 'hidden' : 'posterDiv'}>
                             <div onClick={() => handleClickOpenModal(item.id)}>
                                 <div>
@@ -31,6 +35,14 @@ function MoviePage(props) {
                                     <p>{item.title}</p>
                                 </div>
                             </div>
+
+                            <LikeBtn
+                                key={index}
+                                handleLike={props.handleLike}
+                                handleUnlike={props.handleUnlike}
+                                movie={item}
+                                likeList={props.likeList}
+                            />
                         </div>
                         {curMovie === item.id &&
                             <div className={modalIsOpen ? "modalContainer" : 'hidden'} style={{ backgroundImage: `url(${img_url + item.backdrop_path})` }} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -40,6 +52,12 @@ function MoviePage(props) {
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                     <div className="modaBody">
+                                        <img className="modalImage" src={img_url + item.poster_path} alt="posterImage" />
+                                        <div className="modalOverview">
+                                            <span>{item.overview}</span>
+                                        </div>
+                                        <br></br>
+                                        <span className="modalVote">{item.vote_average}</span>
                                     </div>
 
                                 </div>
@@ -49,14 +67,13 @@ function MoviePage(props) {
                 ))}
                 <nav className={modalIsOpen ? "hidden" : undefined} aria-label="Page navigation example">
                     <ul className="pagination justify-content-center">
-                        <li className="page-item disabled">
-                            <a className="page-link" href="#" tabIndex="-1">Previous</a>
+                        <li className={props.page === 1 ? "page-item disabled" : undefined}>
+                            <span className="page-link" onClick={props.prevPage} tabIndex="-1">Previous</span>
                         </li>
-                        <li className="page-item"><a className="page-link" href="#">1</a></li>
-                        <li className="page-item"><a className="page-link" href="#">2</a></li>
-                        <li className="page-item"><a className="page-link" href="#">3</a></li>
+                        <span className={props.page === 1 ? "page-item disabled" : "page-item"}><a className="page-link" onClick={props.prevPage}>&larr;</a></span>
+                        <span className={props.page === props.movie.length - 1 ? "page-item disabled" : "page-item"}><a className="page-link" onClick={props.nextPage}>&rarr;</a></span>
                         <li className="page-item">
-                            <a className="page-link" href="#">Next</a>
+                            <span className={props.page === props.movie.length - 1 ? "page-item disabled" : "page-link"} onClick={props.nextPage}>Next</span>
                         </li>
                     </ul>
                 </nav>

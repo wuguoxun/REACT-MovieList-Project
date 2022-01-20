@@ -1,4 +1,3 @@
-//rafce
 import React from 'react'
 import "../../App.css"
 import logo from "../NavBar/logo.png"
@@ -10,12 +9,14 @@ const Navbar = () => {
                 <img src={logo} />
             </div>
             <div className='navLinks'>
-                <a href="/home">Home</a>
+                <a href="/">Home</a>
                 <a href="/likedMovie">Liked List</a>
             </div>
         </div>
     )
 }
 
+
 export default Navbar
+
 
