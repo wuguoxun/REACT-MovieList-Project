@@ -2,7 +2,8 @@ import Actions from "./constants"
 
 const initialState = {
     movie: [],
-    pageNum: 1
+    pageNum: 1,
+    likeList: [],
 }
 
 
@@ -22,6 +23,11 @@ const reducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 pageNum: state.pageNum + action.payload
+            }
+        case Actions.SET_LIKELIST:
+            return {
+                ...state,
+                likeList: [...action.payload]
             }
         default:
             return {

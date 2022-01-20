@@ -1,7 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./moviePage.css";
-import { SortMovie } from "../SearchArea/SearchMovie";
+
+import LikeBtn from "../LikeFeature/LikeBtn";
+import { Form } from "react-bootstrap";
+import { SortMovie } from "../SearchArea/SearchArea";
+
 
 function MoviePage(props) {
     const img_url = "https://image.tmdb.org/t/p/w500"
@@ -17,15 +21,13 @@ function MoviePage(props) {
     const handleClickCloseModal = () => {
         setModalIsOpen(false)
     }
-
-
+    // throw new Error('I crashed!');
     return (
         <div>
             <SortMovie />
             <div className="movieDiv">
                 {props.movie.map((item, index) => (
                     <div key={item.id}>
-
                         <div className={modalIsOpen ? 'hidden' : 'posterDiv'}>
                             <div onClick={() => handleClickOpenModal(item.id)}>
                                 <div>
@@ -33,6 +35,14 @@ function MoviePage(props) {
                                     <p>{item.title}</p>
                                 </div>
                             </div>
+
+                            <LikeBtn
+                                key={index}
+                                handleLike={props.handleLike}
+                                handleUnlike={props.handleUnlike}
+                                movie={item}
+                                likeList={props.likeList}
+                            />
                         </div>
                         {curMovie === item.id &&
                             <div className={modalIsOpen ? "modalContainer" : 'hidden'} style={{ backgroundImage: `url(${img_url + item.backdrop_path})` }} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -42,6 +52,12 @@ function MoviePage(props) {
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                     <div className="modaBody">
+                                        <img className="modalImage" src={img_url + item.poster_path} alt="posterImage" />
+                                        <div className="modalOverview">
+                                            <span>{item.overview}</span>
+                                        </div>
+                                        <br></br>
+                                        <span className="modalVote">{item.vote_average}</span>
                                     </div>
 
                                 </div>
